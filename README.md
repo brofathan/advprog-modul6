@@ -38,3 +38,7 @@ Melakukan pengecekan terhadap request_line:
 ```
 
 Jika ternyata NOT FOUND, maka variabel filename akan menjadi error.html. Jadi, pada variabel contents, file yang diambil bukan lagi hello.html melainkan error.html.
+
+4. Commit 4 Reflection
+
+Ada penambahan code pada commit ini, yaitu menambahkan endpoint baru berupa /sleep yang berfungsi meng-sleep server selama 10 detik. Dapat diperhatikan, bahwa program rust yang sekarang dibuat adalah single-threaded yang mana saat suatu client menjalankan endpoint /sleep, jika ada client lain yang ingin mengakses server ini, maka client tersebut harus menunggu bersamaan dengan client yang menjalankan endpoint /sleep. 
