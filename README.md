@@ -15,3 +15,26 @@ Agar rust dapat menangani koneksi ke server, yaitu menangani koneksi TCP, dibuat
 ![Commit 2 screen capture](/assets/images/commit2.png)
 
 Dari commit sebelumnya, ada tambahan code yaitu ada variabel status line yang menunjukkan untuk status requestnya. Lalu ada juga variabel yang berfungsi membaca hello.html yaitu contents. Lalu variabel contents tersebut diproses dengan dicari lengthnya, responsena. Lalu response tersebut akan direturn dari server ke browser.
+
+3. Commit 3 Reflection
+
+![Commit 3 screen capture](/assets/images/commit3.png)
+
+Ada penambahan code pada commit ini yang mana agar fungsi dapat mengembalikan html error saat url yang dimasukkan NOT FOUND.
+
+Menambahkan variabel request_line untuk mengambil request string dari BufReader:
+```rust
+let request_line = buf_reader.lines().next().unwrap().unwrap();
+```
+
+Melakukan pengecekan terhadap request_line:
+
+```rust
+    let (status_line, filename) = if request_line == "GET / HTTP/1.1" {
+        ("HTTP/1.1 200 OK", "hello.html")
+    } else {
+        ("HTTP/1.1 404 NOT FOUND", "error.html")
+    };
+```
+
+Jika ternyata NOT FOUND, maka variabel filename akan menjadi error.html. Jadi, pada variabel contents, file yang diambil bukan lagi hello.html melainkan error.html.
